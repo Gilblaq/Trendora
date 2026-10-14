@@ -72,17 +72,94 @@ function classifyCard(card){
  if(tag.includes('gadget')||tag.includes('audio'))return 'gadgets';
  return 'accessories';
 }
-const categoryMarkup={fashion:0.45,gadgets:0.35,accessories:0.50,jewellery:0.60,home:0.40};
+const landedCostAssumptions={dutyRate:0.15,packagingUSD:0.50,paymentFeeRate:0.02,targetMarginRate:0.25};
+const categoryFreight={fashion:2.50,gadgets:3.50,accessories:1.50,jewellery:1.50,home:3.00};
 document.querySelectorAll('.products .card').forEach(card=>{
  const b=card.querySelector('.addcart');if(!b)return;
  card.dataset.group=classifyCard(card);
  const cost=Number(b.dataset.cost||b.dataset.price||0);
- const markup=categoryMarkup[card.dataset.group]??0.50;
- const retail=Math.ceil(cost*(1+markup)*100)/100;
+ const freight=Number(b.dataset.freight||categoryFreight[card.dataset.group]||2.50);
+ const duty=(cost+freight)*landedCostAssumptions.dutyRate;
+ const packaging=landedCostAssumptions.packagingUSD;
+ const landed=cost+freight+duty+packaging;
+ const retail=Math.ceil((landed/(1-landedCostAssumptions.paymentFeeRate-landedCostAssumptions.targetMarginRate))*100)/100;
+ b.dataset.freight=freight.toFixed(2);
  b.dataset.cost=cost.toFixed(2);b.dataset.price=retail.toFixed(2);
  const price=card.querySelector('.price');const sub=card.querySelector('.subprice');
  if(price)price.textContent='Trendora price: US$'+retail.toFixed(2);
- if(sub)sub.textContent='Supplier listing: US$'+cost.toFixed(2)+'. Provisional '+Math.round(markup*100)+'% markup on item price only; shipping, customs, local delivery and other costs are not included.';
+ if(sub)sub.textContent='Item US
+});
+document.querySelectorAll('.filterbtn').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.filterbtn').forEach(b=>b.classList.toggle('active',b===btn));
+ document.querySelectorAll('.products .card').forEach(card=>{card.hidden=btn.dataset.filter!=='all'&&card.dataset.group!==btn.dataset.filter;});
+}));
+const cart={};
+const money=n=>'US$'+Number(n).toFixed(2);
+function renderCart(){
+ const items=Object.values(cart);const count=items.reduce((a,p)=>a+p.qty,0);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);
+ document.getElementById('cartcount').textContent='('+count+')';document.getElementById('subtotal').textContent=money(total);
+ document.getElementById('cartempty').style.display=count?'none':'block';
+ document.getElementById('cartitems').innerHTML=items.map(p=>'<div class="cartrow"><div><b>'+p.name+'</b><br><small>'+money(p.price)+' each</small></div><div><button class="qtybtn" type="button" data-action="minus" data-name="'+p.name+'">−</button> '+p.qty+' <button class="qtybtn" type="button" data-action="plus" data-name="'+p.name+'">+</button> <button class="qtybtn" type="button" data-action="remove" data-name="'+p.name+'">Remove</button></div></div>').join('');
+}
+document.querySelectorAll('.addcart').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.name;if(!cart[n])cart[n]={name:n,category:b.dataset.category,price:b.dataset.price,qty:0};cart[n].qty++;renderCart();document.getElementById('cart').scrollIntoView({behavior:'smooth',block:'nearest'});}));
+document.getElementById('cartitems').addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b)return;const p=cart[b.dataset.name];if(!p)return;if(b.dataset.action==='plus')p.qty++;if(b.dataset.action==='minus')p.qty--;if(b.dataset.action==='remove'||p.qty<=0)delete cart[b.dataset.name];renderCart();});
+document.getElementById('checkoutform').addEventListener('submit',e=>{e.preventDefault();const items=Object.values(cart);if(!items.length){alert('Please add at least one product to your cart first.');return;}const f=new FormData(e.currentTarget);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);const lines=items.map(p=>'- '+p.name+' x'+p.qty+' (supplier listing '+money(p.price)+' each)').join('%0A');const msg='Hello Trendora, I would like to request this order.%0A%0AItems:%0A'+lines+'%0A%0AEstimated supplier-listing subtotal: '+money(total)+' (not final landed price)%0A%0AName: '+encodeURIComponent(f.get('name'))+'%0APhone: '+encodeURIComponent(f.get('phone'))+'%0ADelivery address/area: '+encodeURIComponent(f.get('address'))+'%0APayment preference: '+encodeURIComponent(f.get('payment'))+'%0ANotes: '+encodeURIComponent(f.get('notes')||'None')+'%0A%0APlease confirm availability, final price, shipping and delivery before I pay.';window.open('https://wa.me/233202503880?text='+msg,'_blank','noopener');});
+</script>
+</body></html>+cost.toFixed(2)+' + estimated freight US
+});
+document.querySelectorAll('.filterbtn').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.filterbtn').forEach(b=>b.classList.toggle('active',b===btn));
+ document.querySelectorAll('.products .card').forEach(card=>{card.hidden=btn.dataset.filter!=='all'&&card.dataset.group!==btn.dataset.filter;});
+}));
+const cart={};
+const money=n=>'US$'+Number(n).toFixed(2);
+function renderCart(){
+ const items=Object.values(cart);const count=items.reduce((a,p)=>a+p.qty,0);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);
+ document.getElementById('cartcount').textContent='('+count+')';document.getElementById('subtotal').textContent=money(total);
+ document.getElementById('cartempty').style.display=count?'none':'block';
+ document.getElementById('cartitems').innerHTML=items.map(p=>'<div class="cartrow"><div><b>'+p.name+'</b><br><small>'+money(p.price)+' each</small></div><div><button class="qtybtn" type="button" data-action="minus" data-name="'+p.name+'">−</button> '+p.qty+' <button class="qtybtn" type="button" data-action="plus" data-name="'+p.name+'">+</button> <button class="qtybtn" type="button" data-action="remove" data-name="'+p.name+'">Remove</button></div></div>').join('');
+}
+document.querySelectorAll('.addcart').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.name;if(!cart[n])cart[n]={name:n,category:b.dataset.category,price:b.dataset.price,qty:0};cart[n].qty++;renderCart();document.getElementById('cart').scrollIntoView({behavior:'smooth',block:'nearest'});}));
+document.getElementById('cartitems').addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b)return;const p=cart[b.dataset.name];if(!p)return;if(b.dataset.action==='plus')p.qty++;if(b.dataset.action==='minus')p.qty--;if(b.dataset.action==='remove'||p.qty<=0)delete cart[b.dataset.name];renderCart();});
+document.getElementById('checkoutform').addEventListener('submit',e=>{e.preventDefault();const items=Object.values(cart);if(!items.length){alert('Please add at least one product to your cart first.');return;}const f=new FormData(e.currentTarget);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);const lines=items.map(p=>'- '+p.name+' x'+p.qty+' (supplier listing '+money(p.price)+' each)').join('%0A');const msg='Hello Trendora, I would like to request this order.%0A%0AItems:%0A'+lines+'%0A%0AEstimated supplier-listing subtotal: '+money(total)+' (not final landed price)%0A%0AName: '+encodeURIComponent(f.get('name'))+'%0APhone: '+encodeURIComponent(f.get('phone'))+'%0ADelivery address/area: '+encodeURIComponent(f.get('address'))+'%0APayment preference: '+encodeURIComponent(f.get('payment'))+'%0ANotes: '+encodeURIComponent(f.get('notes')||'None')+'%0A%0APlease confirm availability, final price, shipping and delivery before I pay.';window.open('https://wa.me/233202503880?text='+msg,'_blank','noopener');});
+</script>
+</body></html>+freight.toFixed(2)+' + estimated duty US
+});
+document.querySelectorAll('.filterbtn').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.filterbtn').forEach(b=>b.classList.toggle('active',b===btn));
+ document.querySelectorAll('.products .card').forEach(card=>{card.hidden=btn.dataset.filter!=='all'&&card.dataset.group!==btn.dataset.filter;});
+}));
+const cart={};
+const money=n=>'US$'+Number(n).toFixed(2);
+function renderCart(){
+ const items=Object.values(cart);const count=items.reduce((a,p)=>a+p.qty,0);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);
+ document.getElementById('cartcount').textContent='('+count+')';document.getElementById('subtotal').textContent=money(total);
+ document.getElementById('cartempty').style.display=count?'none':'block';
+ document.getElementById('cartitems').innerHTML=items.map(p=>'<div class="cartrow"><div><b>'+p.name+'</b><br><small>'+money(p.price)+' each</small></div><div><button class="qtybtn" type="button" data-action="minus" data-name="'+p.name+'">−</button> '+p.qty+' <button class="qtybtn" type="button" data-action="plus" data-name="'+p.name+'">+</button> <button class="qtybtn" type="button" data-action="remove" data-name="'+p.name+'">Remove</button></div></div>').join('');
+}
+document.querySelectorAll('.addcart').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.name;if(!cart[n])cart[n]={name:n,category:b.dataset.category,price:b.dataset.price,qty:0};cart[n].qty++;renderCart();document.getElementById('cart').scrollIntoView({behavior:'smooth',block:'nearest'});}));
+document.getElementById('cartitems').addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b)return;const p=cart[b.dataset.name];if(!p)return;if(b.dataset.action==='plus')p.qty++;if(b.dataset.action==='minus')p.qty--;if(b.dataset.action==='remove'||p.qty<=0)delete cart[b.dataset.name];renderCart();});
+document.getElementById('checkoutform').addEventListener('submit',e=>{e.preventDefault();const items=Object.values(cart);if(!items.length){alert('Please add at least one product to your cart first.');return;}const f=new FormData(e.currentTarget);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);const lines=items.map(p=>'- '+p.name+' x'+p.qty+' (supplier listing '+money(p.price)+' each)').join('%0A');const msg='Hello Trendora, I would like to request this order.%0A%0AItems:%0A'+lines+'%0A%0AEstimated supplier-listing subtotal: '+money(total)+' (not final landed price)%0A%0AName: '+encodeURIComponent(f.get('name'))+'%0APhone: '+encodeURIComponent(f.get('phone'))+'%0ADelivery address/area: '+encodeURIComponent(f.get('address'))+'%0APayment preference: '+encodeURIComponent(f.get('payment'))+'%0ANotes: '+encodeURIComponent(f.get('notes')||'None')+'%0A%0APlease confirm availability, final price, shipping and delivery before I pay.';window.open('https://wa.me/233202503880?text='+msg,'_blank','noopener');});
+</script>
+</body></html>+duty.toFixed(2)+' + packaging US
+});
+document.querySelectorAll('.filterbtn').forEach(btn=>btn.addEventListener('click',()=>{
+ document.querySelectorAll('.filterbtn').forEach(b=>b.classList.toggle('active',b===btn));
+ document.querySelectorAll('.products .card').forEach(card=>{card.hidden=btn.dataset.filter!=='all'&&card.dataset.group!==btn.dataset.filter;});
+}));
+const cart={};
+const money=n=>'US$'+Number(n).toFixed(2);
+function renderCart(){
+ const items=Object.values(cart);const count=items.reduce((a,p)=>a+p.qty,0);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);
+ document.getElementById('cartcount').textContent='('+count+')';document.getElementById('subtotal').textContent=money(total);
+ document.getElementById('cartempty').style.display=count?'none':'block';
+ document.getElementById('cartitems').innerHTML=items.map(p=>'<div class="cartrow"><div><b>'+p.name+'</b><br><small>'+money(p.price)+' each</small></div><div><button class="qtybtn" type="button" data-action="minus" data-name="'+p.name+'">−</button> '+p.qty+' <button class="qtybtn" type="button" data-action="plus" data-name="'+p.name+'">+</button> <button class="qtybtn" type="button" data-action="remove" data-name="'+p.name+'">Remove</button></div></div>').join('');
+}
+document.querySelectorAll('.addcart').forEach(b=>b.addEventListener('click',()=>{const n=b.dataset.name;if(!cart[n])cart[n]={name:n,category:b.dataset.category,price:b.dataset.price,qty:0};cart[n].qty++;renderCart();document.getElementById('cart').scrollIntoView({behavior:'smooth',block:'nearest'});}));
+document.getElementById('cartitems').addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b)return;const p=cart[b.dataset.name];if(!p)return;if(b.dataset.action==='plus')p.qty++;if(b.dataset.action==='minus')p.qty--;if(b.dataset.action==='remove'||p.qty<=0)delete cart[b.dataset.name];renderCart();});
+document.getElementById('checkoutform').addEventListener('submit',e=>{e.preventDefault();const items=Object.values(cart);if(!items.length){alert('Please add at least one product to your cart first.');return;}const f=new FormData(e.currentTarget);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);const lines=items.map(p=>'- '+p.name+' x'+p.qty+' (supplier listing '+money(p.price)+' each)').join('%0A');const msg='Hello Trendora, I would like to request this order.%0A%0AItems:%0A'+lines+'%0A%0AEstimated supplier-listing subtotal: '+money(total)+' (not final landed price)%0A%0AName: '+encodeURIComponent(f.get('name'))+'%0APhone: '+encodeURIComponent(f.get('phone'))+'%0ADelivery address/area: '+encodeURIComponent(f.get('address'))+'%0APayment preference: '+encodeURIComponent(f.get('payment'))+'%0ANotes: '+encodeURIComponent(f.get('notes')||'None')+'%0A%0APlease confirm availability, final price, shipping and delivery before I pay.';window.open('https://wa.me/233202503880?text='+msg,'_blank','noopener');});
+</script>
+</body></html>+packaging.toFixed(2)+'. Includes estimated 2% payment fee and 25% target margin. Verify actual costs before selling.';
 });
 document.querySelectorAll('.filterbtn').forEach(btn=>btn.addEventListener('click',()=>{
  document.querySelectorAll('.filterbtn').forEach(b=>b.classList.toggle('active',b===btn));
