@@ -68,6 +68,18 @@ footer .disclaimer{color:#b6c0df}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
+
+/* Accessible password visibility and confirmation */
+.password-wrap{display:flex;align-items:stretch;gap:8px;margin-top:5px}
+.accountform .password-wrap input{flex:1;min-width:0;margin-top:0}
+.password-toggle{flex:0 0 auto;border:1px solid #dce1ee;border-radius:10px;background:#fff;padding:0 14px;color:#23365f;font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+.password-toggle:hover{border-color:var(--b);color:var(--b)}
+.password-toggle:focus-visible{outline:3px solid #4169ff55;outline-offset:2px}
+#confirmHint{display:block;margin-top:5px}
+#confirmHint.match{color:#16784b}
+#confirmHint.mismatch{color:#b42318}
+@media(max-width:520px){.password-wrap{gap:6px}.password-toggle{padding:0 11px}}
+
 </style>
 </head>
 <body>
@@ -85,7 +97,7 @@ footer .disclaimer{color:#b6c0df}
 <button class="filterbtn" type="button" data-filter="jewellery">Jewellery & Watches</button>
 <button class="filterbtn" type="button" data-filter="home">Home & Decor</button>
 </div>
-<div class="accountbox" id="account"><span class="kicker">YOUR GROOVE LINK</span><h3 id="accountHeading">Create an account or log in</h3><p class="muted">Create an account with your email and a password, then log in when you return.</p><div id="signedInPanel" hidden><p id="signedInText"></p><button class="btn" id="logoutBtn" type="button">Log out</button></div><div id="accountForms"><div class="accounttabs"><button type="button" class="active" data-mode="signup">Sign up</button><button type="button" data-mode="login">Log in</button></div><form id="accountForm" class="accountform"><label class="full">Email address<input type="email" name="email" required autocomplete="email" maxlength="254"></label><label class="full">Password<input type="password" name="password" required minlength="8" maxlength="128" autocomplete="new-password"><small class="muted">At least 8 characters.</small></label><div class="full"><button class="btn" id="accountSubmit" type="submit">Create account</button></div></form><p id="accountMessage" class="accountmessage" aria-live="polite"></p></div><p class="disclaimer">This simple account system does not include email verification or password-reset emails. Use a unique password and never reuse an important password.</p></div><div class="products">
+<div class="accountbox" id="account"><span class="kicker">YOUR GROOVE LINK</span><h3 id="accountHeading">Create an account or log in</h3><p class="muted">Create an account with your email and a password, then log in when you return.</p><div id="signedInPanel" hidden><p id="signedInText"></p><button class="btn" id="logoutBtn" type="button">Log out</button></div><div id="accountForms"><div class="accounttabs"><button type="button" class="active" data-mode="signup">Sign up</button><button type="button" data-mode="login">Log in</button></div><form id="accountForm" class="accountform"><label class="full">Email address<input type="email" name="email" required autocomplete="email" maxlength="254" placeholder="you@example.com"></label><label class="full">Password<div class="password-wrap"><input id="accountPassword" type="password" name="password" required minlength="8" maxlength="128" autocomplete="new-password" placeholder="Create a password"><button class="password-toggle" id="togglePassword" type="button" aria-label="Show password" aria-pressed="false">Show</button></div><small class="muted">Use at least 8 characters.</small></label><label class="full" id="confirmPasswordLabel">Confirm password<div class="password-wrap"><input id="confirmPassword" type="password" name="confirmPassword" required minlength="8" maxlength="128" autocomplete="new-password" placeholder="Type the password again"><button class="password-toggle" id="toggleConfirmPassword" type="button" aria-label="Show confirmation password" aria-pressed="false">Show</button></div><small class="muted" id="confirmHint">Enter the same password again to check for typing mistakes.</small></label><div class="full"><button class="btn" id="accountSubmit" type="submit">Create account</button></div></form><p id="accountMessage" class="accountmessage" aria-live="polite"></p></div><p class="disclaimer">This simple account system does not include email verification or password-reset emails. Use a unique password and never reuse an important password.</p></div><div class="products">
 <article class="card"><div class="photo"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S21cb3a49715b484f96ab7884d3b27d863.jpg" alt="Magnetic car phone holder product photo" loading="lazy"></div><div class="info"><span class="tag">GADGETS</span><h3>Magnetic Car Phone Holder</h3><p>Compact magnetic phone mount for a car dashboard or compatible flat surface. Check phone compatibility before ordering.</p><div class="price">Supplier listing: US$3.80</div><div class="subprice">Listing price only. Shipping, customs, local delivery and final retail price are not included or confirmed.</div><button class="btn addcart" type="button" data-name="Magnetic Car Phone Holder" data-category="GADGETS" data-price="3.80">Add to cart +</button></div></article>
 <article class="card"><div class="photo"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S1d3ca563ddb84b9da760f9d54006c29ff.jpg" alt="Mini rotating galaxy projector lamp product photo" loading="lazy"></div><div class="info"><span class="tag">HOME & LIGHTING</span><h3>Mini Galaxy Projector Lamp</h3><p>Decorative starry-sky ambient lamp for a bedroom or cosy room setup. Confirm exact model and included accessories.</p><div class="price">Supplier listing: US$16.38</div><div class="subprice">Listing price only. Shipping, customs, local delivery and final retail price are not included or confirmed.</div><button class="btn addcart" type="button" data-name="Mini Galaxy Projector Lamp" data-category="HOME & LIGHTING" data-price="16.38">Add to cart +</button></div></article>
 <article class="card"><div class="photo"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S08e3ecdefa1c42e5aaa0e9d33cd25958l.jpg" alt="Oversized graphic T-shirt product photo" loading="lazy"></div><div class="info"><span class="tag">FASHION</span><h3>Oversized Graphic T-Shirt</h3><p>Casual oversized tee style. Confirm print, size chart, material and available colours with the seller.</p><div class="price">Supplier listing: US$14.20</div><div class="subprice">Listing price only. Shipping, customs, local delivery and final retail price are not included or confirmed.</div><button class="btn addcart" type="button" data-name="Oversized Graphic T-Shirt" data-category="FASHION" data-price="14.20">Add to cart +</button></div></article>
@@ -131,7 +143,45 @@ function setAccountMode(mode){accountMode=mode;document.querySelectorAll('.accou
 document.querySelectorAll('.accounttabs button').forEach(b=>b.addEventListener('click',()=>setAccountMode(b.dataset.mode)));
 function renderAccount(email){document.getElementById('accountForms').hidden=!!email;document.getElementById('signedInPanel').hidden=!email;if(email){document.getElementById('accountHeading').textContent='You are logged in';document.getElementById('signedInText').textContent='Signed in as '+email;}else{document.getElementById('accountHeading').textContent=accountMode==='signup'?'Create your Groove Link account':'Welcome back to Groove Link';}}
 async function checkAccount(){const token=localStorage.getItem(accountTokenKey);if(!token){renderAccount('');return;}try{const r=await fetch(ACCOUNT_API+'/me',{method:'POST',headers:{'Authorization':'Bearer '+token}});const d=await r.json();if(r.ok&&d.email)renderAccount(d.email);else{localStorage.removeItem(accountTokenKey);renderAccount('');}}catch{renderAccount('');}}
-accountForm.addEventListener('submit',async e=>{e.preventDefault();const email=accountForm.elements.email.value.trim();const password=accountForm.elements.password.value;const submit=document.getElementById('accountSubmit');submit.disabled=true;submit.textContent=accountMode==='signup'?'Creating account…':'Logging in…';showAccountMessage('Please wait…');try{const r=await fetch(ACCOUNT_API+'/'+accountMode,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});const d=await r.json();if(!r.ok)throw new Error(d.error||'Could not complete your request.');localStorage.setItem(accountTokenKey,d.token);accountForm.reset();renderAccount(d.email);showAccountMessage(accountMode==='signup'?'Account created successfully.':'You are now logged in.');}catch(err){showAccountMessage(err.message||'Network error. Please try again.',true);}finally{submit.disabled=false;submit.textContent=accountMode==='signup'?'Create account':'Log in';}});
+const passwordInput=document.getElementById('accountPassword');
+const confirmPasswordInput=document.getElementById('confirmPassword');
+const confirmPasswordLabel=document.getElementById('confirmPasswordLabel');
+const confirmHint=document.getElementById('confirmHint');
+function attachPasswordToggle(buttonId,input){
+ const button=document.getElementById(buttonId);
+ button.addEventListener('click',()=>{
+  const reveal=input.type==='password';
+  input.type=reveal?'text':'password';
+  button.textContent=reveal?'Hide':'Show';
+  button.setAttribute('aria-label',reveal?'Hide password':'Show password');
+  button.setAttribute('aria-pressed',String(reveal));
+ });
+}
+attachPasswordToggle('togglePassword',passwordInput);
+attachPasswordToggle('toggleConfirmPassword',confirmPasswordInput);
+function updateConfirmHint(){
+ if(accountMode!=='signup'){confirmHint.textContent='';confirmHint.className='muted';return true;}
+ if(!confirmPasswordInput.value){confirmHint.textContent='Enter the same password again to check for typing mistakes.';confirmHint.className='muted';return false;}
+ const matches=passwordInput.value===confirmPasswordInput.value;
+ confirmHint.textContent=matches?'Passwords match.':'Passwords do not match yet.';
+ confirmHint.className=matches?'match':'mismatch';
+ return matches;
+}
+passwordInput.addEventListener('input',updateConfirmHint);
+confirmPasswordInput.addEventListener('input',updateConfirmHint);
+function updatePasswordFields(){
+ const signup=accountMode==='signup';
+ confirmPasswordLabel.hidden=!signup;
+ confirmPasswordInput.required=signup;
+ if(!signup){confirmPasswordInput.value='';confirmPasswordInput.setCustomValidity('');}
+ updateConfirmHint();
+}
+const originalRenderAccount=renderAccount;
+renderAccount=function(email){
+ originalRenderAccount(email);
+ updatePasswordFields();
+};
+accountForm.addEventListener('submit',async e=>{e.preventDefault();const email=accountForm.elements.email.value.trim();const password=accountForm.elements.password.value;if(accountMode==='signup'&&password!==confirmPasswordInput.value){confirmPasswordInput.setCustomValidity('Passwords must match.');confirmPasswordInput.reportValidity();updateConfirmHint();return;}confirmPasswordInput.setCustomValidity('');const submit=document.getElementById('accountSubmit');submit.disabled=true;submit.textContent=accountMode==='signup'?'Creating account…':'Logging in…';showAccountMessage('Please wait…');try{const r=await fetch(ACCOUNT_API+'/'+accountMode,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});const d=await r.json();if(!r.ok)throw new Error(d.error||'Could not complete your request.');localStorage.setItem(accountTokenKey,d.token);accountForm.reset();renderAccount(d.email);showAccountMessage(accountMode==='signup'?'Account created successfully.':'You are now logged in.');}catch(err){showAccountMessage(err.message||'Network error. Please try again.',true);}finally{submit.disabled=false;submit.textContent=accountMode==='signup'?'Create account':'Log in';}});
 document.getElementById('logoutBtn').addEventListener('click',async()=>{const token=localStorage.getItem(accountTokenKey);try{if(token)await fetch(ACCOUNT_API+'/logout',{method:'POST',headers:{'Authorization':'Bearer '+token}});}catch{}localStorage.removeItem(accountTokenKey);renderAccount('');showAccountMessage('You have logged out.');});
 checkAccount();
 
