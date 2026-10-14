@@ -89,7 +89,7 @@ document.querySelectorAll('.filterbtn').forEach(btn=>btn.addEventListener('click
  document.querySelectorAll('.products .card').forEach(card=>{card.hidden=btn.dataset.filter!=='all'&&card.dataset.group!==btn.dataset.filter;});
 }));
 const cart={};
-const money=n=>'US
+const money=n=>'US$'+Number(n).toFixed(2);
 function renderCart(){
  const items=Object.values(cart);const count=items.reduce((a,p)=>a+p.qty,0);const total=items.reduce((a,p)=>a+p.qty*Number(p.price),0);
  document.getElementById('cartcount').textContent='('+count+')';document.getElementById('subtotal').textContent=money(total);
