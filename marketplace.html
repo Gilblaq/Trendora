@@ -168,7 +168,14 @@ document.getElementById("orderForm").addEventListener("submit",event=>{
   ].join("\n");
   window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank","noopener");
 });
-renderProducts();renderBasket();
+fetch("./products.json",{cache:"no-store"})
+  .then(response=>{if(!response.ok)throw new Error("Catalogue data unavailable");return response.json();})
+  .then(data=>{
+    if(Array.isArray(data.products)) products.push(...data.products.filter(validProduct));
+    renderProducts();
+  })
+  .catch(()=>renderProducts());
+renderBasket();
 </script>
 </body>
 </html>
