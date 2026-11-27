@@ -30,3 +30,10 @@ For Temu listings priced in another currency, convert the actual item price to G
 
 ## Important limitation
 This is a static GitHub Pages / Cloudflare Pages storefront. It does not scrape Jumia or Temu, sync live inventory, or accept online payments. Automated marketplace feeds/API access and a secure server-side order/payment backend need separate approved integrations and Cloudflare configuration. Never put marketplace API keys, payment secrets or admin passwords in browser JavaScript.
+
+## Marketplace access and content rights
+
+- Do not scrape marketplace pages or copy/re-host product photos, descriptions, or other listing material unless the marketplace or rights holder has authorized that use. Jumia's Ghana buyer terms allow forwarding product links but restrict republishing or commercially exploiting marketplace material except where expressly permitted: https://pay.jumia.com.gh/cms/customers-terms-and-conditions.html
+- Jumia Ghana also offers its official JForce sales-consultant programme. It provides a unique link to products from Jumia's full catalogue and Jumia handles fulfilment; this is a commission/referral model, not the custom reseller checkout described above: https://www.jumia.com.gh/mlp-jforce/
+- Temu's official affiliate programme provides approved affiliate links/codes and pays qualifying commissions or referral rewards subject to the local programme terms. This is also different from purchasing products as a reseller: https://www.temu.com/affiliate_question.html
+- Before any automated import, confirm that the specific programme grants catalogue/feed access and image/content usage rights for Groove Link. Do not place API keys or access tokens in this static site.
