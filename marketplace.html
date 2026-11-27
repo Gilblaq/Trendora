@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b3d">
+<title>Jumia &amp; Temu Marketplace | Groove Link Ghana</title>
+<meta name="description" content="Shop selected Jumia and Temu finds through Groove Link Ghana. Transparent Ghana cedi prices with a 45% default markup and order support on WhatsApp.">
+<style>
+:root{--navy:#101b3d;--blue:#4169ff;--ink:#17213b;--muted:#65708a;--line:#e7eaf2;--pale:#f5f7ff;--green:#087b53}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,Arial,sans-serif;color:var(--ink);background:#fff}
+a{text-decoration:none;color:inherit}.wrap{width:min(1120px,92%);margin:auto}
+.top{background:#0b1430;color:#fff;text-align:center;padding:10px;font-size:11px;letter-spacing:1.2px}
+header{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 5px 24px #101b3d08}
+.nav{min-height:72px;display:flex;align-items:center;gap:20px}.brand{font-size:27px;font-weight:950;letter-spacing:-1.2px;color:var(--navy)}.brand span{color:var(--blue)}
+nav{display:flex;gap:20px;margin-left:auto;font-size:14px;font-weight:750}nav a:hover{color:var(--blue)}
+.btn{display:inline-block;border:0;border-radius:12px;background:var(--blue);color:white;padding:12px 16px;font-weight:850;cursor:pointer}
+.btn.secondary{background:#eef2ff;color:#263f9e}.btn:disabled{opacity:.45;cursor:not-allowed}
+.hero{background:radial-gradient(ellipse at 90% 10%,#496aff,transparent 34%),linear-gradient(120deg,#0b1430,#172b61);color:#fff;padding:55px 0}
+.hero h1{font-size:clamp(38px,6vw,64px);line-height:1.02;letter-spacing:-2.8px;margin:15px 0}.hero h1 em{font-style:normal;color:#a9c3ff}
+.hero p{max-width:660px;line-height:1.8;color:#dce4ff}.hero .pill{display:inline-block;padding:7px 11px;border:1px solid #ffffff44;border-radius:99px;font-size:11px;letter-spacing:1px;font-weight:850}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.hero-actions .secondary{background:#fff;color:var(--navy)}
+main{padding:38px 0 64px}.intro{display:flex;justify-content:space-between;align-items:end;gap:20px}.kicker{font-size:11px;letter-spacing:2px;color:var(--blue);font-weight:950}
+h2{font-size:clamp(26px,4vw,36px);letter-spacing:-1px;margin:8px 0}.muted{color:var(--muted);line-height:1.7;font-size:14px}
+.tools{display:grid;grid-template-columns:minmax(180px,1fr) 220px 180px;gap:10px;margin:24px 0 18px}
+.tools input,.tools select{width:100%;padding:13px;border:1px solid #dce1ee;border-radius:11px;font:inherit;background:#fff}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 22px}.filter{border:1px solid var(--line);background:#fff;border-radius:99px;padding:9px 14px;font-weight:750;cursor:pointer}.filter.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{border:1px solid var(--line);border-radius:17px;overflow:hidden;background:#fff;display:flex;flex-direction:column;min-width:0}
+.photo{height:225px;background:var(--pale);display:grid;place-items:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:contain}.photo .placeholder{font-size:54px;color:#a9b5d4}
+.content{padding:15px;display:flex;flex-direction:column;flex:1}.tag{align-self:flex-start;border-radius:99px;padding:5px 9px;background:#eef2ff;color:#3453cb;font-size:10px;font-weight:900;letter-spacing:.5px}
+.content h3{font-size:16px;margin:10px 0 5px}.desc{font-size:13px;color:var(--muted);line-height:1.6;min-height:42px}
+.price{font-size:21px;font-weight:950;margin:12px 0 3px}.source{font-size:11px;color:var(--muted);margin-bottom:13px}.content .btn{width:100%;margin-top:auto}
+.empty{border:1px dashed #cbd3e6;background:#fafbff;border-radius:17px;padding:34px 20px;text-align:center;grid-column:1/-1}.empty .emoji{font-size:40px}.empty h3{margin:10px 0}.empty p{max-width:570px;margin:0 auto 15px}
+.cart{margin-top:34px;padding:22px;border:1px solid var(--line);border-radius:18px;background:#f8f9ff}.cart h2{font-size:25px}.cart-item{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid var(--line);background:white;border-radius:8px;padding:4px 9px;cursor:pointer}
+.total{font-size:19px;font-weight:950;margin:18px 0}.checkout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.checkout label{font-size:12px;font-weight:800}.checkout input,.checkout textarea,.checkout select{display:block;width:100%;margin-top:5px;padding:12px;border:1px solid #dce1ee;border-radius:10px;font:inherit}.full{grid-column:1/-1}
+.notice{margin-top:22px;padding:15px;border-radius:12px;background:#fff7e5;color:#71551d;font-size:12px;line-height:1.75}
+.how{background:var(--pale);padding:38px 0}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{padding:18px;border:1px solid var(--line);border-radius:15px;background:white}.step b{color:var(--blue);font-size:22px}.step p{font-size:13px;color:var(--muted);line-height:1.65}
+footer{background:#0b1430;color:#e7ebf8;padding:25px 0;font-size:12px}.footrow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:760px){.nav{flex-wrap:wrap;padding:10px 0}.brand{font-size:24px}nav{order:3;flex-basis:100%;margin:0;overflow:auto;padding:5px 0}nav a{white-space:nowrap}.hero{padding:42px 0}.tools{grid-template-columns:1fr 1fr}.tools input{grid-column:1/-1}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.photo{height:165px}.steps{grid-template-columns:1fr}.intro{display:block}}
+@media(max-width:430px){.grid{gap:10px}.content{padding:11px}.photo{height:135px}.content h3{font-size:14px}.desc{font-size:12px}.price{font-size:18px}.checkout{grid-template-columns:1fr}.full{grid-column:1}}
+</style>
+</head>
+<body>
+<div class="top">JUMIA + TEMU FINDS · 45% DEFAULT MARKUP · GHANA</div>
+<header><div class="wrap nav"><a class="brand" href="index.html">groove link<span>.</span></a><nav><a href="index.html">Home</a><a href="#catalogue">Shop products</a><a href="#how">How ordering works</a><a href="#checkout">My order</a></nav></div></header>
+<section class="hero"><div class="wrap"><span class="pill">ONE PLACE TO DISCOVER MORE</span><h1>Jumia and Temu finds.<br><em>Groove Link prices.</em></h1><p>Discover selected products from Jumia and Temu in one Ghana-focused catalogue. Add products to your order request and we'll confirm current availability, the final total and delivery before you pay.</p><div class="hero-actions"><a class="btn" href="#catalogue">Explore products ↓</a><a class="btn secondary" href="index.html">Visit original Groove Link store</a></div></div></section>
+<main class="wrap" id="catalogue">
+<div class="intro"><div><span class="kicker">THE MARKETPLACE EDIT</span><h2>Find your next favourite thing</h2><p class="muted">Prices are shown in Ghana cedis. The default selling price is calculated as supplier cost × 1.45. Delivery and any additional charges are confirmed separately.</p></div></div>
+<div class="tools"><input id="search" type="search" placeholder="Search products..."><select id="category"><option value="all">All categories</option><option>Fashion</option><option>Gadgets</option><option>Accessories</option><option>Jewellery</option><option>Home</option><option>Other</option></select><select id="sort"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="az">Name: A to Z</option></select></div>
+<div class="filters" role="group" aria-label="Filter by marketplace"><button class="filter active" data-source="all">All marketplaces</button><button class="filter" data-source="Jumia">Jumia</button><button class="filter" data-source="Temu">Temu</button></div>
+<div class="grid" id="products"><div class="empty"><div class="emoji">🛍️</div><h3>Preparing the first marketplace collection</h3><p class="muted">Products will appear here after their source listing, supplier price and Ghana delivery options have been checked. We won't display made-up prices or pretend an item is in stock.</p></div></div>
+<section class="cart" id="checkout"><span class="kicker">YOUR ORDER</span><h2>Shopping basket <span id="count">(0)</span></h2><p class="muted" id="emptyCart">Your basket is empty. Add products from the catalogue to begin.</p><div id="cartItems"></div><div class="total">Product subtotal: <span id="subtotal">GH₵0.00</span></div><p class="muted">This is the Groove Link product subtotal only. Delivery and any other confirmed charges are not included.</p>
+<form class="checkout" id="orderForm"><label>Full name<input name="name" autocomplete="name" required></label><label>Phone number<input name="phone" type="tel" autocomplete="tel" required placeholder="e.g. 024 000 0000"></label><label class="full">Delivery area / address<input name="address" autocomplete="street-address" required placeholder="Town, area and delivery location"></label><label>Preferred payment<select name="payment"><option>Mobile Money (MoMo)</option><option>Discuss on WhatsApp</option></select></label><label>Additional notes<input name="notes" placeholder="Optional product or delivery notes"></label><div class="full"><button class="btn" id="sendOrder" type="submit" disabled>Request order on WhatsApp ↗</button></div></form>
+<div class="notice"><b>Important:</b> Sending an order request does not take payment or guarantee stock. Groove Link will first verify the exact product/variant, supplier availability, current supplier price, delivery and any extra charges. We will then send the confirmed total and MoMo payment instructions. Please do not send money until you receive that confirmation. Never share your MoMo PIN or OTP.</div>
+</section>
+</main>
+<section class="how" id="how"><div class="wrap"><span class="kicker">SIMPLE &amp; TRANSPARENT</span><h2>How reseller ordering works</h2><div class="steps"><div class="step"><b>01</b><h3>Choose products</h3><p>Browse the Jumia and Temu collection and add the items you want to your basket.</p></div><div class="step"><b>02</b><h3>We confirm everything</h3><p>Groove Link checks the listing, selected option, current price, availability and delivery to your area.</p></div><div class="step"><b>03</b><h3>Pay Groove Link after confirmation</h3><p>We send your final total and MoMo payment instructions. After payment is confirmed, we arrange the purchase and delivery.</p></div></div></div></section>
+<footer><div class="wrap footrow"><span>© <span id="year"></span> Groove Link Ghana</span><span>Jumia + Temu reseller catalogue · 45% default markup</span><a href="index.html">Back to Groove Link home ↑</a></div></footer>
+<script>
+const WHATSAPP_NUMBER = "233202503880";
+const MARKUP_RATE = 0.45;
+const products = [];
+let sourceFilter = "all";
+let basket = {};
+const money = value => "GH₵" + Number(value).toFixed(2);
+const sellingPrice = item => Math.round(Number(item.supplierPriceGhs) * (1 + MARKUP_RATE) * 100) / 100;
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function validProduct(p) {
+  return p && p.id && p.name && p.description && p.sourceUrl &&
+    ["Jumia","Temu"].includes(p.source) &&
+    Number.isFinite(Number(p.supplierPriceGhs)) && Number(p.supplierPriceGhs) > 0 &&
+    p.available === true;
+}
+function productCard(p) {
+  const card = document.createElement("article");
+  card.className = "card";
+  const photo = document.createElement("div");
+  photo.className = "photo";
+  if (p.imageUrl) {
+    const img = document.createElement("img");
+    img.src = p.imageUrl; img.alt = p.name; img.loading = "lazy";
+    img.onerror = () => { photo.innerHTML = '<span class="placeholder">🛍️</span>'; };
+    photo.appendChild(img);
+  } else {
+    const placeholder = document.createElement("span");
+    placeholder.className = "placeholder"; placeholder.textContent = "🛍️";
+    photo.appendChild(placeholder);
+  }
+  const content = document.createElement("div");
+  content.className = "content";
+  const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = p.source + " · " + (p.category || "Other");
+  const name = document.createElement("h3"); name.textContent = p.name;
+  const desc = document.createElement("p"); desc.className = "desc"; desc.textContent = p.description;
+  const price = document.createElement("div"); price.className = "price"; price.textContent = money(sellingPrice(p));
+  const note = document.createElement("div"); note.className = "source"; note.textContent = "Groove Link selling price · delivery confirmed separately";
+  const add = document.createElement("button"); add.className = "btn"; add.type = "button"; add.textContent = "Add to basket +";
+  add.addEventListener("click", () => { basket[p.id] = basket[p.id] || {product:p,qty:0}; basket[p.id].qty += 1; renderBasket(); document.getElementById("checkout").scrollIntoView({behavior:"smooth",block:"nearest"}); });
+  content.append(tag,name,desc,price,note,add); card.append(photo,content); return card;
+}
+function renderProducts() {
+  const term = document.getElementById("search").value.trim().toLowerCase();
+  const category = document.getElementById("category").value;
+  const sort = document.getElementById("sort").value;
+  let list = products.filter(validProduct).filter(p =>
+    (sourceFilter === "all" || p.source === sourceFilter) &&
+    (category === "all" || (p.category || "Other").toLowerCase() === category.toLowerCase()) &&
+    (p.name + " " + p.description + " " + p.source).toLowerCase().includes(term)
+  );
+  if (sort === "low") list.sort((a,b)=>sellingPrice(a)-sellingPrice(b));
+  if (sort === "high") list.sort((a,b)=>sellingPrice(b)-sellingPrice(a));
+  if (sort === "az") list.sort((a,b)=>a.name.localeCompare(b.name));
+  const root = document.getElementById("products"); root.replaceChildren();
+  if (!list.length) {
+    const empty = document.createElement("div"); empty.className = "empty";
+    empty.innerHTML = '<div class="emoji">🛍️</div><h3>No products to show yet</h3><p class="muted">We're preparing verified Jumia and Temu listings. Check back soon.</p>';
+    root.appendChild(empty); return;
+  }
+  list.forEach(p=>root.appendChild(productCard(p)));
+}
+function renderBasket() {
+  const rows = Object.values(basket);
+  const qty = rows.reduce((n,row)=>n+row.qty,0);
+  const total = rows.reduce((n,row)=>n+sellingPrice(row.product)*row.qty,0);
+  document.getElementById("count").textContent = "(" + qty + ")";
+  document.getElementById("subtotal").textContent = money(total);
+  document.getElementById("emptyCart").hidden = qty > 0;
+  document.getElementById("sendOrder").disabled = qty === 0;
+  const root = document.getElementById("cartItems"); root.replaceChildren();
+  rows.forEach(row=>{
+    const line = document.createElement("div"); line.className = "cart-item";
+    const label = document.createElement("span"); label.textContent = row.product.name + " · " + money(sellingPrice(row.product)) + " each";
+    const controls = document.createElement("span"); controls.className = "qty";
+    const minus = document.createElement("button"); minus.type="button"; minus.textContent="−"; minus.setAttribute("aria-label","Remove one");
+    const number = document.createElement("b"); number.textContent=row.qty;
+    const plus = document.createElement("button"); plus.type="button"; plus.textContent="+";
+    const remove = document.createElement("button"); remove.type="button"; remove.textContent="Remove";
+    minus.addEventListener("click",()=>{row.qty--;if(row.qty<=0)delete basket[row.product.id];renderBasket();});
+    plus.addEventListener("click",()=>{row.qty++;renderBasket();});
+    remove.addEventListener("click",()=>{delete basket[row.product.id];renderBasket();});
+    controls.append(minus,number,plus,remove);line.append(label,controls);root.appendChild(line);
+  });
+}
+document.getElementById("search").addEventListener("input",renderProducts);
+document.getElementById("category").addEventListener("change",renderProducts);
+document.getElementById("sort").addEventListener("change",renderProducts);
+document.querySelectorAll(".filter").forEach(button=>button.addEventListener("click",()=>{
+  sourceFilter=button.dataset.source;
+  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===button));
+  renderProducts();
+}));
+document.getElementById("orderForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  const rows=Object.values(basket);if(!rows.length)return;
+  const form=new FormData(event.currentTarget);
+  const total=rows.reduce((n,row)=>n+sellingPrice(row.product)*row.qty,0);
+  const lines=rows.map(row=>"- "+row.product.name+" ("+row.product.source+") x"+row.qty+" — "+money(sellingPrice(row.product))+" each").join("\n");
+  const message=[
+    "Hello Groove Link, I would like to place a reseller order request.",
+    "", "Items:", lines, "", "Product subtotal: "+money(total),
+    "Please confirm current availability, delivery and the final amount before I pay.",
+    "", "Name: "+form.get("name"), "Phone: "+form.get("phone"),
+    "Delivery area/address: "+form.get("address"), "Payment preference: "+form.get("payment"),
+    "Notes: "+(form.get("notes")||"None")
+  ].join("\n");
+  window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank","noopener");
+});
+fetch("./products.json",{cache:"no-store"})
+  .then(response=>{if(!response.ok)throw new Error("Catalogue data unavailable");return response.json();})
+  .then(data=>{
+    if(Array.isArray(data.products)) products.push(...data.products.filter(validProduct));
+    renderProducts();
+  })
+  .catch(()=>renderProducts());
+renderBasket();
+</script>
+</body>
+</html>
