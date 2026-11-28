@@ -1,5 +1,6 @@
 {
-  "model": "affiliate",
+  "model": "jumia_jforce_affiliate",
   "currency": "GHS",
+  "storeLink": "https://jforce.jumia.com.gh/s/OZ0viiU",
   "products": []
 }
