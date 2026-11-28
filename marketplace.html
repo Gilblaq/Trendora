@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101b3d">
-<title>Jumia &amp; Temu Affiliate Finds | Groove Link Ghana</title>
-<meta name="description" content="Discover selected Jumia and Temu products through Groove Link Ghana. Shop securely on the original marketplace using our affiliate links.">
+<title>Jumia JForce Finds | Groove Link Ghana</title>
+<meta name="description" content="Discover selected Jumia products through Groove Link Ghana. Shop securely on the original marketplace using our affiliate links.">
 <style>
 :root{--navy:#101b3d;--blue:#4169ff;--ink:#17213b;--muted:#65708a;--line:#e7eaf2;--pale:#f5f7ff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,Arial,sans-serif;color:var(--ink);background:#fff}a{text-decoration:none;color:inherit}.wrap{width:min(1120px,92%);margin:auto}
@@ -21,25 +21,25 @@ main{padding:38px 0 64px}.intro{display:flex;justify-content:space-between;align
 </style>
 </head>
 <body>
-<div class="top">JUMIA JFORCE + TEMU AFFILIATE FINDS · GHANA</div>
+<div class="top">JUMIA JFORCE · GHANA · NO STOCK REQUIRED</div>
 <header><div class="wrap nav"><a class="brand" href="index.html">groove link<span>.</span></a><nav><a href="index.html">Home</a><a href="#catalogue">Shop affiliate finds</a><a href="#how">How it works</a></nav></div></header>
-<section class="hero"><div class="wrap"><span class="pill">MORE FINDS · ONE DISCOVERY PAGE</span><h1>Jumia and Temu finds.<br><em>Picked for you.</em></h1><p>Explore selected products from Jumia and Temu in one Ghana-focused catalogue. When you choose an item, we'll send you to the original marketplace to check the latest price, delivery options and complete your purchase there.</p><div class="hero-actions"><a class="btn" href="#catalogue">Explore products ↓</a><a class="btn secondary" href="index.html">Visit original Groove Link store</a></div></div></section>
+<section class="hero"><div class="wrap"><span class="pill">MORE FINDS · ONE DISCOVERY PAGE</span><h1>Jumia finds.<br><em>Picked for you.</em></h1><p>Explore selected products from Jumia in one Ghana-focused catalogue. When you choose an item, we'll send you to the original marketplace to check the latest price, delivery options and complete your purchase there.</p><div class="hero-actions"><a class="btn" href="https://jforce.jumia.com.gh/s/OZ0viiU" target="_blank" rel="sponsored noopener noreferrer">Shop Jumia through Groove Link ↗</a><a class="btn secondary" href="#catalogue">Browse featured finds ↓</a></div></div></section>
 <main class="wrap" id="catalogue">
 <div class="intro"><div><span class="kicker">THE MARKETPLACE EDIT</span><h2>Find your next favourite thing</h2><p class="muted">Browse affiliate products from both marketplaces. Prices, stock, shipping and checkout are handled by the marketplace and can change at any time.</p></div></div>
 <div class="tools"><input id="search" type="search" placeholder="Search products..." aria-label="Search products"><select id="category" aria-label="Filter category"><option value="all">All categories</option><option>Fashion</option><option>Gadgets</option><option>Accessories</option><option>Jewellery</option><option>Home</option><option>Other</option></select></div>
-<div class="filters" role="group" aria-label="Filter by marketplace"><button class="filter active" data-source="all">All marketplaces</button><button class="filter" data-source="Jumia">Jumia</button><button class="filter" data-source="Temu">Temu</button></div>
+
 <div class="grid" id="products"><div class="empty"><div class="emoji">🛍️</div><h3>Preparing our first affiliate collection</h3><p class="muted">Products will appear after the relevant affiliate account is approved and its tracked product link and permitted product information are ready. We won't publish fake links or guessed prices.</p></div></div>
-<div class="disclosure"><b>Affiliate disclosure:</b> Some product links on this page may be affiliate links. If you buy through an eligible link, Groove Link may earn a commission at no extra cost to you. You complete the purchase and payment on Jumia or Temu, not on Groove Link. Product availability, prices, delivery, returns and customer support are subject to the marketplace's terms.</div>
+<div class="disclosure"><b>Affiliate disclosure:</b> Some product links on this page may be affiliate links. If you buy through an eligible link, Groove Link may earn a commission at no extra cost to you. You complete the purchase and payment on Jumia, not on Groove Link. Product availability, prices, delivery, returns and customer support are subject to the marketplace's terms.</div>
 </main>
-<section class="how" id="how"><div class="wrap"><span class="kicker">SIMPLE &amp; TRANSPARENT</span><h2>How affiliate shopping works</h2><div class="steps"><div class="step"><b>01</b><h3>Discover on Groove Link</h3><p>Browse selected Jumia JForce and Temu affiliate products in one place.</p></div><div class="step"><b>02</b><h3>Open the marketplace</h3><p>Tap the product link to view the current listing, options, price and delivery details on its original marketplace.</p></div><div class="step"><b>03</b><h3>Buy there securely</h3><p>Complete checkout and payment directly with Jumia or Temu. Groove Link may earn a commission if the order qualifies under the programme terms.</p></div></div></div></section>
-<footer><div class="wrap footrow"><span>© <span id="year"></span> Groove Link Ghana</span><span>Jumia JForce + Temu affiliate discovery</span><a href="index.html">Back to Groove Link home ↑</a></div></footer>
+<section class="how" id="how"><div class="wrap"><span class="kicker">SIMPLE &amp; TRANSPARENT</span><h2>How affiliate shopping works</h2><div class="steps"><div class="step"><b>01</b><h3>Discover on Groove Link</h3><p>Browse selected Jumia JForce products in one place.</p></div><div class="step"><b>02</b><h3>Open the marketplace</h3><p>Tap the product link to view the current listing, options, price and delivery details on its original marketplace.</p></div><div class="step"><b>03</b><h3>Buy there securely</h3><p>Complete checkout and payment directly with Jumia. Groove Link may earn a commission if the order qualifies under the programme terms.</p></div></div></div></section>
+<footer><div class="wrap footrow"><span>© <span id="year"></span> Groove Link Ghana</span><span>Jumia JForce affiliate discovery</span><a href="index.html">Back to Groove Link home ↑</a></div></footer>
 <script>
 const products = [];
-let sourceFilter = "all";
+let sourceFilter = "Jumia";
 document.getElementById("year").textContent = new Date().getFullYear();
 function validProduct(p) {
   return p && p.id && p.name && p.description &&
-    ["Jumia","Temu"].includes(p.source) &&
+    p.source === "Jumia" &&
     typeof p.affiliateUrl === "string" && /^https:\/\//i.test(p.affiliateUrl) &&
     p.approvedContent === true;
 }
@@ -65,12 +65,12 @@ function renderProducts(){
   const term=document.getElementById("search").value.trim().toLowerCase();
   const category=document.getElementById("category").value;
   const list=products.filter(validProduct).filter(p=>
-    (sourceFilter==="all"||p.source===sourceFilter)&&
+    p.source === "Jumia" &&
     (category==="all"||(p.category||"Other").toLowerCase()===category.toLowerCase())&&
     (p.name+" "+p.description+" "+p.source).toLowerCase().includes(term)
   );
   const root=document.getElementById("products");root.replaceChildren();
-  if(!list.length){const empty=document.createElement("div");empty.className="empty";empty.innerHTML='<div class="emoji">🛍️</div><h3>No products to show yet</h3><p class="muted">We're preparing approved Jumia JForce and Temu affiliate links. Check back soon.</p>';root.appendChild(empty);return;}
+  if(!list.length){const empty=document.createElement("div");empty.className="empty";empty.innerHTML='<div class="emoji">🛍️</div><h3>No products to show yet</h3><p class="muted">We're preparing approved Jumia JForce links. Check back soon.</p>';root.appendChild(empty);return;}
   list.forEach(p=>root.appendChild(productCard(p)));
 }
 document.getElementById("search").addEventListener("input",renderProducts);
